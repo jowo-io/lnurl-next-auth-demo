@@ -28,3 +28,5 @@ This app is deployed on Vercel and can be tested here: [https://lnurl-next-auth-
 ### Video demo
 
 Here's a video demo of the auth in action:
+
+![image](https://i.ibb.co/GCrdyDg/ezgif-3-0e1ebd1e5a-Copy.gif)
