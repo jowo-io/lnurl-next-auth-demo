@@ -18,5 +18,13 @@ Use with caution.
 - add readme explaining:
   - core concepts
   - how it works
-  - how to setup dev environement
+  - how to setup dev env
   - how to deploy
+
+### Live demo
+
+This app is deployed on Vercel and can be tested here: [https://lnurl-next-auth-demo.vercel.app/](https://lnurl-next-auth-demo.vercel.app/)
+
+### Video demo
+
+Here's a video demo of the auth in action:
