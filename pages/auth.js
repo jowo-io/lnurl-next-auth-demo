@@ -46,7 +46,6 @@ const ping = async (k1, callbackUrl) => {
 
 export default function AuthPage({ providers }) {
   const session = useSession();
-  const { replace } = useRouter();
   const [lnAuth, setAuth] = useState();
 
   async function create() {
@@ -61,7 +60,7 @@ export default function AuthPage({ providers }) {
 
   // create the lnurl
   useEffect(() => {
-    (async () => await create)();
+    create();
   }, []);
 
   // poll to check for updated auth state
