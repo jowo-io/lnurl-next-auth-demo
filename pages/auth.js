@@ -57,7 +57,7 @@ export default function AuthPage({ providers }) {
       setAuth({
         lnurl: data.lnurl,
         k1: data.k1,
-        callbackUrl: data.callbackUrl,
+        callbackUrl: process.env.NEXT_PUBLIC_SITE_URL,
       });
     })();
   }, []);
@@ -88,12 +88,6 @@ export default function AuthPage({ providers }) {
 
   //     return () => clearTimeout(timer);
   //   }, [lnAuth]);
-
-  // redirect to home page when logged in
-  useEffect(() => {
-    if (!session || !session.data) return;
-    replace("/");
-  }, [session]);
 
   return (
     <div>
