@@ -49,17 +49,19 @@ export default function AuthPage({ providers }) {
   const { replace } = useRouter();
   const [lnAuth, setAuth] = useState();
 
+  async function create() {
+    const response = await fetch("/api/create");
+    const data = await response.json();
+    setAuth({
+      lnurl: data.lnurl,
+      k1: data.k1,
+      callbackUrl: process.env.NEXT_PUBLIC_SITE_URL,
+    });
+  }
+
   // create the lnurl
   useEffect(() => {
-    (async () => {
-      const response = await fetch("/api/create");
-      const data = await response.json();
-      setAuth({
-        lnurl: data.lnurl,
-        k1: data.k1,
-        callbackUrl: process.env.NEXT_PUBLIC_SITE_URL,
-      });
-    })();
+    (async () => await create)();
   }, []);
 
   // poll to check for updated auth state
@@ -81,13 +83,13 @@ export default function AuthPage({ providers }) {
   }, [lnAuth, session]);
 
   // reset the QR code ever 2 minutes
-  //   useEffect(() => {
-  //     if (!lnAuth || !lnAuth.lnurl) return;
+  useEffect(() => {
+    if (!lnAuth || !lnAuth.lnurl) return;
 
-  //     let timer = setTimeout(() => createLnAuth.reset(), 2 * 60 * 1000);
+    let timer = setTimeout(() => create(), 2 * 60 * 1000);
 
-  //     return () => clearTimeout(timer);
-  //   }, [lnAuth]);
+    return () => clearTimeout(timer);
+  }, [lnAuth]);
 
   return (
     <div>
