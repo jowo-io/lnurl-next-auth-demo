@@ -6,7 +6,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "@vercel/kv": "^0.2.2",
+    "lnurl": "^0.24.2",
     "next": "^13.4.7",
+    "next-auth": "^4.22.1",
+    "qrcode": "^1.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
